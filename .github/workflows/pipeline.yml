@@ -16,6 +16,5 @@ jobs:
 
     - name: Docker Build and Push
       run: |
-        echo $DOCKER_IMAGE
-        docker build -t $DOCKER_IMAGE .
-        docker push $DOCKER_IMAGE
+        docker build -t ${{ secrets.DOCKER_USERNAME }} .
+        docker push ${{ secrets.DOCKER_USERNAME }}

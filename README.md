@@ -16,3 +16,7 @@ docker push ateamsw/devcontainer:latest
 
 This project uses GitHub Actions and the [`pipeline.yml`](.github/workflows/pipeline.yml) file to build and push
 this image to [Docker Hub](https://hub.docker.com/r/ateamsw/devcontainer).
+
+## Status
+
+![Build Dev Container](https://github.com/ateamsw/devcontainer/workflows/Build%20Dev%20Container/badge.svg)
