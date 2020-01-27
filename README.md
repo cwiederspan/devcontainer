@@ -11,8 +11,3 @@ docker build -t ateamsw/devcontainer:latest .
 docker push ateamsw/devcontainer:latest
 
 ```
-
-### TODO Items
-
-* Setup Nerd Fonts
-* Edit docker-compose.yml with local file directory
