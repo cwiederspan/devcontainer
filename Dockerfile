@@ -110,7 +110,7 @@ RUN apt install -y golang-go \
     && go get -u github.com/justjanne/powerline-go
 
 # Copy in the bash settings file
-COPY .bashrc /root/.bashrc
+COPY .bashrc /etc/bash_completion
 
 # Clean up
 RUN apt-get autoremove -y \
