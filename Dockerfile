@@ -20,6 +20,14 @@ ARG TFLINT_VERSION=0.13.4
 # Latest version of helm may be found at https://github.com/helm/helm/releases
 ARG HELM_VERSION=3.0.2
 
+# This Dockerfile adds a non-root user with sudo access. Use the "remoteUser"
+# property in devcontainer.json to use it. On Linux, the container user's GID/UIDs
+# will be updated to match your local UID/GID (when using the dockerFile property).
+# See https://aka.ms/vscode-remote/containers/non-root-user for details.
+ARG USERNAME=vscode
+ARG USER_UID=1000
+ARG USER_GID=$USER_UID
+
 # Create a temp directory for downloads
 RUN mkdir -p /tmp/downloads
 
@@ -40,6 +48,14 @@ RUN apt-get update \
         software-properties-common \
         gnupg2 \
         lsb-release 2>&1
+
+# Create a non-root user to use if preferred - see https://aka.ms/vscode-remote/containers/non-root-user.
+RUN groupadd --gid $USER_GID $USERNAME \
+    && useradd -s /bin/bash --uid $USER_UID --gid $USER_GID -m $USERNAME \
+    # [Optional] Add sudo support for the non-root user
+    && apt-get install -y sudo \
+    && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME\
+    && chmod 0440 /etc/sudoers.d/$USERNAME
 
 # Install Docker CE CLI
 RUN apt-get update \
@@ -94,7 +110,8 @@ RUN apt install -y golang-go \
     && go get -u github.com/justjanne/powerline-go
 
 # Copy in the bash settings file
-COPY .bashrc /root/.bashrc
+COPY custom.bashrc /etc/custom.bashrc
+RUN echo '. /etc/custom.bashrc' >> /etc/bash.bashrc
 
 # Clean up
 RUN apt-get autoremove -y \
