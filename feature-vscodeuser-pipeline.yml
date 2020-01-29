@@ -1,0 +1,26 @@
+name: Build VS Code User Dev Container
+on:
+  push:
+    branches:
+      - feature-vscodeuser
+env:
+  IMAGE_NAME: ${{ secrets.DOCKER_IMAGE }}
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout Code
+        uses: actions/checkout@feature-vscodeuser
+
+      - name: Docker Login
+        uses: azure/docker-login@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Docker Build and Push
+        run: |
+          docker build . -t $IMAGE_NAME:${{ github.sha }} -t $IMAGE_NAME:vscode
+          docker push $IMAGE_NAME:${{ github.sha }}
+          docker push $IMAGE_NAME:vscode
