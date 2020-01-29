@@ -1,8 +1,8 @@
-name: Build VS Code User Dev Container
+name: Build Dev Container
 on:
   push:
     branches:
-      - feature-vscodeuser
+      - master
 env:
   IMAGE_NAME: ${{ secrets.DOCKER_IMAGE }}
 jobs:
@@ -21,6 +21,6 @@ jobs:
 
       - name: Docker Build and Push
         run: |
-          docker build . -t $IMAGE_NAME:${{ github.sha }} -t $IMAGE_NAME:vscode
+          docker build . -t $IMAGE_NAME:${{ github.sha }} -t $IMAGE_NAME:latest
           docker push $IMAGE_NAME:${{ github.sha }}
-          docker push $IMAGE_NAME:vscode
+          docker push $IMAGE_NAME:latest
