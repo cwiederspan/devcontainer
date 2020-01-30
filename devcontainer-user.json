@@ -1,7 +1,7 @@
 // For format details, see https://aka.ms/vscode-remote/devcontainer.json or the definition README at
 // https://github.com/microsoft/vscode-dev-containers/tree/master/containers/azure-cli
 {
-	"name": "ATeamSW Devcontainer",
+	"name": "My Dev Container",
 	"image": "ateamsw/devcontainer:latest",
 	
 	// Uncomment the next line to have VS Code connect as an existing non-root user in the container. 
