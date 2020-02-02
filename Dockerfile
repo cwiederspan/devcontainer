@@ -20,6 +20,9 @@ ARG TFLINT_VERSION=0.13.4
 # Latest version of helm may be found at https://github.com/helm/helm/releases
 ARG HELM_VERSION=3.0.2
 
+# Latest version of dotnet core SDK
+ARG NET_CORE_VERSION=3.1
+
 # This Dockerfile adds a non-root user with sudo access. Use the "remoteUser"
 # property in devcontainer.json to use it. On Linux, the container user's GID/UIDs
 # will be updated to match your local UID/GID (when using the dockerFile property).
@@ -101,6 +104,19 @@ RUN curl -sSL -o /tmp/downloads/helm.tar.gz https://get.helm.sh/helm-v${HELM_VER
     && tar -C /tmp/downloads/helm -zxvf /tmp/downloads/helm.tar.gz \
     && mv /tmp/downloads/helm/linux-amd64/helm /usr/local/bin \
     && helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+
+# Install .NET Core 3.1
+ENV \
+    # Enable detection of running in a container
+    DOTNET_RUNNING_IN_CONTAINER=true \
+    # Enable correct mode for dotnet watch (only mode supported in a container)
+    DOTNET_USE_POLLING_FILE_WATCHER=true \
+    # Skip extraction of XML docs - generally not useful within an image/container - helps performance
+    NUGET_XMLDOC_MODE=skip
+
+RUN echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-debian-buster-prod buster main" > /etc/apt/sources.list.d/microsoft.list \ 
+    && apt-get update \
+    && apt-get install -y dotnet-sdk-${NET_CORE_VERSION}
 
 # Install Dapr CLI
 RUN curl -sL https://raw.githubusercontent.com/dapr/cli/master/install/install.sh | /bin/bash
