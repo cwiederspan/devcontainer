@@ -34,10 +34,11 @@
 	
 	// Add the IDs of extensions you want installed when the container is created in the array below.
 	"extensions": [
+		"ms-vscode.csharp",
 		"ms-vscode.azurecli",
 		"ms-azuretools.vscode-azureterraform",
+		"ms-kubernetes-tools.vscode-kubernetes-tools",
 		"mauve.terraform",
-		"ms-vscode.csharp",
 		"visualstudioexptteam.vscodeintellicode"
 	]
 }
