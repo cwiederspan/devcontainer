@@ -14,6 +14,16 @@ docker push ateamsw/devcontainer:latest
 
 ```
 
+## Test Locally
+
+```bash
+
+docker build -t ateamsw/devcontainer:local .
+
+docker run -it --rm ateamsw/devcontainer:local
+
+```
+
 ## GitHub Actions
 
 This project uses GitHub Actions and the [`pipeline.yml`](.github/workflows/pipeline.yml) file to build and push

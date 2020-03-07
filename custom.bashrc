@@ -7,6 +7,7 @@ alias ls='ls $LS_OPTIONS'
 #
 # Some more alias to avoid making mistakes
 alias k='kubectl'
+alias tf='terraform'
 #
 # Setup the powerline configuration for a pretty shell experience
 GOPATH=$HOME/go
