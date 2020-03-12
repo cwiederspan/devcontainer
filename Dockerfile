@@ -138,6 +138,11 @@ RUN curl -s -L https://github.com/Azure/azure-functions-core-tools/releases/down
 RUN apt install -y golang-go \
     && go get -u github.com/justjanne/powerline-go
 
+# Install some NPM packages
+RUN npm install -g \
+    @vue/cli \
+    @angular/cli
+
 # Copy in the bash settings file
 COPY custom.bashrc /etc/custom.bashrc
 RUN echo '. /etc/custom.bashrc' >> /etc/bash.bashrc
