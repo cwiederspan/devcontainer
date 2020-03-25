@@ -12,19 +12,19 @@ ARG NODE_VERSION=12.x
 ARG COMPOSE_VERSION=1.25.4
 
 # Latest version of Terraform may be found at https://www.terraform.io/downloads.html
-ARG TERRAFORM_VERSION=0.12.23
+ARG TERRAFORM_VERSION=0.12.24
 
 # Latest version of Terrform Linter may be found at https://github.com/terraform-linters/tflint/releases
-ARG TFLINT_VERSION=0.15.1
+ARG TFLINT_VERSION=0.15.3
 
 # Latest version of helm may be found at https://github.com/helm/helm/releases
-ARG HELM_VERSION=3.1.1
+ARG HELM_VERSION=3.1.2
 
 # Latest version of dotnet core SDK
 ARG NET_CORE_VERSION=3.1
 
 # Azure Functions CLI may be found at https://github.com/Azure/azure-functions-core-tools/releases
-ARG AZFUNC_CLI_VERSION=3.0.2245
+ARG AZFUNC_CLI_VERSION=3.0.2358
 
 # This Dockerfile adds a non-root user with sudo access. Use the "remoteUser"
 # property in devcontainer.json to use it. On Linux, the container user's GID/UIDs
