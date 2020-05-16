@@ -9,22 +9,22 @@ ENV DEBIAN_FRONTEND=noninteractive
 ARG NODE_VERSION=12.x
 
 # Docker Compose version may be found at https://github.com/docker/compose/releases
-ARG COMPOSE_VERSION=1.25.4
+ARG COMPOSE_VERSION=1.25.5
 
 # Latest version of Terraform may be found at https://www.terraform.io/downloads.html
-ARG TERRAFORM_VERSION=0.12.24
+ARG TERRAFORM_VERSION=0.12.25
 
 # Latest version of Terrform Linter may be found at https://github.com/terraform-linters/tflint/releases
-ARG TFLINT_VERSION=0.15.3
+ARG TFLINT_VERSION=0.16.0
 
 # Latest version of helm may be found at https://github.com/helm/helm/releases
-ARG HELM_VERSION=3.1.2
+ARG HELM_VERSION=3.2.1
 
 # Latest version of dotnet core SDK
 ARG NET_CORE_VERSION=3.1
 
 # Azure Functions CLI may be found at https://github.com/Azure/azure-functions-core-tools/releases
-ARG AZFUNC_CLI_VERSION=3.0.2358
+ARG AZFUNC_CLI_VERSION=3.0.2534
 
 # This Dockerfile adds a non-root user with sudo access. Use the "remoteUser"
 # property in devcontainer.json to use it. On Linux, the container user's GID/UIDs
