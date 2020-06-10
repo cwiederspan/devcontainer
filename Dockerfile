@@ -9,16 +9,16 @@ ENV DEBIAN_FRONTEND=noninteractive
 ARG NODE_VERSION=12.x
 
 # Docker Compose version may be found at https://github.com/docker/compose/releases
-ARG COMPOSE_VERSION=1.25.5
+ARG COMPOSE_VERSION=1.26.0
 
 # Latest version of Terraform may be found at https://www.terraform.io/downloads.html
-ARG TERRAFORM_VERSION=0.12.25
+ARG TERRAFORM_VERSION=0.12.26
 
 # Latest version of Terrform Linter may be found at https://github.com/terraform-linters/tflint/releases
-ARG TFLINT_VERSION=0.16.0
+ARG TFLINT_VERSION=0.16.2
 
 # Latest version of helm may be found at https://github.com/helm/helm/releases
-ARG HELM_VERSION=3.2.1
+ARG HELM_VERSION=3.2.3
 
 # Latest version of dotnet core SDK
 ARG NET_CORE_VERSION=3.1
