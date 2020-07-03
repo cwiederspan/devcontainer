@@ -9,22 +9,25 @@ ENV DEBIAN_FRONTEND=noninteractive
 ARG NODE_VERSION=12.x
 
 # Docker Compose version may be found at https://github.com/docker/compose/releases
-ARG COMPOSE_VERSION=1.26.0
+ARG COMPOSE_VERSION=1.26.2
 
 # Latest version of Terraform may be found at https://www.terraform.io/downloads.html
-ARG TERRAFORM_VERSION=0.12.26
+ARG TERRAFORM_VERSION=0.12.28
 
 # Latest version of Terrform Linter may be found at https://github.com/terraform-linters/tflint/releases
-ARG TFLINT_VERSION=0.16.2
+ARG TFLINT_VERSION=0.17.0
 
 # Latest version of helm may be found at https://github.com/helm/helm/releases
-ARG HELM_VERSION=3.2.3
+ARG HELM_VERSION=3.2.4
 
 # Latest version of dotnet core SDK
 ARG NET_CORE_VERSION=3.1
 
 # Azure Functions CLI may be found at https://github.com/Azure/azure-functions-core-tools/releases
-ARG AZFUNC_CLI_VERSION=3.0.2534
+ARG AZFUNC_CLI_VERSION=3.0.2630
+
+# Azure Functions CLI may be found at https://github.com/fluxcd/flux/releases
+ARG FLUXCTL_CLI_VERSION=1.19.0
 
 # This Dockerfile adds a non-root user with sudo access. Use the "remoteUser"
 # property in devcontainer.json to use it. On Linux, the container user's GID/UIDs
@@ -134,6 +137,10 @@ RUN curl -s -L https://github.com/Azure/azure-functions-core-tools/releases/down
     && cd /usr/local/bin/azfunc \
     && chmod +x func \
     && ln -s /usr/local/bin/azfunc/func /usr/bin/func
+
+# Install fluxctl
+RUN curl -s -L https://github.com/weaveworks/flux/releases/download/${FLUXCTL_CLI_VERSION}/fluxctl_linux_amd64 -o /usr/local/bin/fluxctl \
+    && chmod +x /usr/local/bin/fluxctl
 
 # Install GoLang and Powerline for the bash shell
 RUN apt install -y golang-go \
