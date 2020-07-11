@@ -26,8 +26,11 @@ ARG NET_CORE_VERSION=3.1
 # Azure Functions CLI may be found at https://github.com/Azure/azure-functions-core-tools/releases
 ARG AZFUNC_CLI_VERSION=3.0.2630
 
-# Azure Functions CLI may be found at https://github.com/fluxcd/flux/releases
+# Flux may be found at https://github.com/fluxcd/flux/releases
 ARG FLUXCTL_CLI_VERSION=1.19.0
+
+# Linkerd may be found at https://github.com/linkerd/linkerd2/releases
+ARG LINKERD_CLI_VERSION=stable-2.8.1
 
 # This Dockerfile adds a non-root user with sudo access. Use the "remoteUser"
 # property in devcontainer.json to use it. On Linux, the container user's GID/UIDs
@@ -83,6 +86,15 @@ RUN curl -sSL "https://github.com/docker/compose/releases/download/${COMPOSE_VER
 RUN curl -sL https://deb.nodesource.com/setup_${NODE_VERSION} | bash - \
     && apt-get update \
     && apt-get install -y nodejs
+
+# Install GoLang and Powerline for the bash shell
+RUN apt install -y golang-go \
+    && go get -u github.com/justjanne/powerline-go
+
+# Install some NPM packages
+RUN npm install -g \
+    @vue/cli \
+    @angular/cli
 
 # Install the Azure CLI
 RUN echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $(lsb_release -cs) main" > /etc/apt/sources.list.d/azure-cli.list \
@@ -142,14 +154,9 @@ RUN curl -s -L https://github.com/Azure/azure-functions-core-tools/releases/down
 RUN curl -s -L https://github.com/weaveworks/flux/releases/download/${FLUXCTL_CLI_VERSION}/fluxctl_linux_amd64 -o /usr/local/bin/fluxctl \
     && chmod +x /usr/local/bin/fluxctl
 
-# Install GoLang and Powerline for the bash shell
-RUN apt install -y golang-go \
-    && go get -u github.com/justjanne/powerline-go
-
-# Install some NPM packages
-RUN npm install -g \
-    @vue/cli \
-    @angular/cli
+# Install Linkerd
+RUN curl -s -L https://github.com/linkerd/linkerd2/releases/download/${LINKERD_CLI_VERSION}/linkerd2-cli-${LINKERD_CLI_VERSION}-linux -o /usr/local/bin/linkerd \
+    && chmod +x /usr/local/bin/linkerd
 
 # Copy in the bash settings file
 COPY custom.bashrc /etc/custom.bashrc
