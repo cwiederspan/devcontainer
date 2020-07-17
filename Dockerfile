@@ -27,7 +27,7 @@ ARG NET_CORE_VERSION=3.1
 ARG AZFUNC_CLI_VERSION=3.0.2630
 
 # Flux may be found at https://github.com/fluxcd/flux/releases
-ARG FLUXCTL_CLI_VERSION=1.19.0
+ARG FLUXCTL_CLI_VERSION=1.20.0
 
 # Linkerd may be found at https://github.com/linkerd/linkerd2/releases
 ARG LINKERD_CLI_VERSION=stable-2.8.1
