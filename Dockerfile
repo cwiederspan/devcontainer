@@ -12,19 +12,19 @@ ARG NODE_VERSION=12.x
 ARG COMPOSE_VERSION=1.26.2
 
 # Latest version of Terraform may be found at https://www.terraform.io/downloads.html
-ARG TERRAFORM_VERSION=0.12.29
+ARG TERRAFORM_VERSION=0.13.0
 
 # Latest version of Terrform Linter may be found at https://github.com/terraform-linters/tflint/releases
 ARG TFLINT_VERSION=0.18.0
 
 # Latest version of helm may be found at https://github.com/helm/helm/releases
-ARG HELM_VERSION=3.2.4
+ARG HELM_VERSION=3.3.0
 
 # Latest version of dotnet core SDK
 ARG NET_CORE_VERSION=3.1
 
 # Azure Functions CLI may be found at https://github.com/Azure/azure-functions-core-tools/releases
-ARG AZFUNC_CLI_VERSION=3.0.2630
+ARG AZFUNC_CLI_VERSION=3.0.2798
 
 # Flux may be found at https://github.com/fluxcd/flux/releases
 ARG FLUXCTL_CLI_VERSION=1.20.1
