@@ -62,6 +62,7 @@ RUN apt-get update \
         gnupg2 \
         python3-pip \
         squashfs-tools \
+        golang-go \
         lsb-release 2>&1
 
 # Create a non-root user to use if preferred - see https://aka.ms/vscode-remote/containers/non-root-user.
@@ -87,10 +88,6 @@ RUN curl -sSL "https://github.com/docker/compose/releases/download/${COMPOSE_VER
 RUN curl -sL https://deb.nodesource.com/setup_${NODE_VERSION} | bash - \
     && apt-get update \
     && apt-get install -y nodejs
-
-# Install GoLang and Powerline for the bash shell
-RUN apt install -y golang-go \
-    && go get -u github.com/justjanne/powerline-go
 
 # Install some NPM packages
 RUN npm install -g \
@@ -124,7 +121,7 @@ RUN curl -sSL -o /tmp/downloads/helm.tar.gz https://get.helm.sh/helm-v${HELM_VER
     && mkdir -p /tmp/downloads/helm \
     && tar -C /tmp/downloads/helm -zxvf /tmp/downloads/helm.tar.gz \
     && mv /tmp/downloads/helm/linux-amd64/helm /usr/local/bin \
-    && helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+    && helm repo add stable https://charts.helm.sh/stable/
 
 # Install .NET Core 3.1
 ENV \
