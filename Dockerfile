@@ -61,6 +61,7 @@ RUN apt-get update \
         software-properties-common \
         gnupg2 \
         python3-pip \
+        squashfs-tools \
         lsb-release 2>&1
 
 # Create a non-root user to use if preferred - see https://aka.ms/vscode-remote/containers/non-root-user.
