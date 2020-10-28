@@ -9,25 +9,25 @@ ENV DEBIAN_FRONTEND=noninteractive
 ARG NODE_VERSION=12.x
 
 # Docker Compose version may be found at https://github.com/docker/compose/releases
-ARG COMPOSE_VERSION=1.26.2
+ARG COMPOSE_VERSION=1.27.4
 
 # Latest version of Terraform may be found at https://www.terraform.io/downloads.html
-ARG TERRAFORM_VERSION=0.13.0
+ARG TERRAFORM_VERSION=0.13.5
 
 # Latest version of Terrform Linter may be found at https://github.com/terraform-linters/tflint/releases
-ARG TFLINT_VERSION=0.18.0
+ARG TFLINT_VERSION=0.20.3
 
 # Latest version of helm may be found at https://github.com/helm/helm/releases
-ARG HELM_VERSION=3.3.0
+ARG HELM_VERSION=3.4.0
 
 # Latest version of dotnet core SDK
 ARG NET_CORE_VERSION=3.1
 
 # Azure Functions CLI may be found at https://github.com/Azure/azure-functions-core-tools/releases
-ARG AZFUNC_CLI_VERSION=3.0.2798
+ARG AZFUNC_CLI_VERSION=3.0.2931
 
 # Flux may be found at https://github.com/fluxcd/flux/releases
-ARG FLUXCTL_CLI_VERSION=1.20.1
+ARG FLUXCTL_CLI_VERSION=1.21.0
 
 # Linkerd may be found at https://github.com/linkerd/linkerd2/releases
 ARG LINKERD_CLI_VERSION=stable-2.8.1
