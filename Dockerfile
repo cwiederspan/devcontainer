@@ -156,10 +156,6 @@ RUN curl -s -L https://github.com/weaveworks/flux/releases/download/${FLUXCTL_CL
 RUN curl -s -L https://github.com/linkerd/linkerd2/releases/download/${LINKERD_CLI_VERSION}/linkerd2-cli-${LINKERD_CLI_VERSION}-linux -o /usr/local/bin/linkerd \
     && chmod +x /usr/local/bin/linkerd
 
-# Copy in the bash settings file
-COPY custom.bashrc /etc/custom.bashrc
-RUN echo '. /etc/custom.bashrc' >> /etc/bash.bashrc
-
 # Clean up
 RUN apt-get autoremove -y \
     && apt-get clean -y \
