@@ -12,6 +12,8 @@ docker build -t ateamsw/devcontainer:latest .
 
 docker push ateamsw/devcontainer:latest
 
+docker run -it --rm ateamsw/devcontainer:latest
+
 ```
 
 ## Test Locally

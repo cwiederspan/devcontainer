@@ -8,6 +8,9 @@ ENV DEBIAN_FRONTEND=noninteractive
 # The version of Node JS to install
 ARG NODE_VERSION=12.x
 
+# The version of Go Lang install
+ARG GO_VERSION=1.15.4
+
 # Docker Compose version may be found at https://github.com/docker/compose/releases
 ARG COMPOSE_VERSION=1.27.4
 
@@ -62,7 +65,6 @@ RUN apt-get update \
         gnupg2 \
         python3-pip \
         squashfs-tools \
-        golang-go \
         lsb-release 2>&1
 
 # Create a non-root user to use if preferred - see https://aka.ms/vscode-remote/containers/non-root-user.
@@ -72,6 +74,12 @@ RUN groupadd --gid $USER_GID $USERNAME \
     && apt-get install -y sudo \
     && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME\
     && chmod 0440 /etc/sudoers.d/$USERNAME
+
+# Install Go
+RUN curl -sSL -o /tmp/downloads/golang.tar.gz https://dl.google.com/go/go${GO_VERSION}.linux-amd64.tar.gz  \
+    && tar -C /usr/local -xzf /tmp/downloads/golang.tar.gz
+
+ENV PATH=$PATH:/usr/local/go/bin
 
 # Install Docker CE CLI
 RUN apt-get update \
