@@ -24,7 +24,7 @@ ARG TFLINT_VERSION=0.20.3
 ARG HELM_VERSION=3.4.0
 
 # Latest version of dotnet core SDK
-ARG NET_CORE_VERSION=3.1
+ARG DOTNET_VERSION=5.0
 
 # Azure Functions CLI may be found at https://github.com/Azure/azure-functions-core-tools/releases
 ARG AZFUNC_CLI_VERSION=3.0.2931
@@ -142,7 +142,7 @@ ENV \
 
 RUN echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-debian-buster-prod buster main" > /etc/apt/sources.list.d/microsoft.list \ 
     && apt-get update \
-    && apt-get install -y dotnet-sdk-${NET_CORE_VERSION}
+    && apt-get install -y dotnet-sdk-${DOTNET_VERSION}
 
 # Install Dapr CLI
 RUN curl -sL https://raw.githubusercontent.com/dapr/cli/master/install/install.sh | /bin/bash
