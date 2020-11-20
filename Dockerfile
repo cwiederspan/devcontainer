@@ -8,8 +8,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 # The version of Node JS to install
 ARG NODE_VERSION=12.x
 
-# The version of Go Lang install
-ARG GO_VERSION=1.15.4
+# The version of Go Lang install found at https://golang.org/dl/
+ARG GO_VERSION=1.15.5
 
 # Docker Compose version may be found at https://github.com/docker/compose/releases
 ARG COMPOSE_VERSION=1.27.4
@@ -21,19 +21,19 @@ ARG TERRAFORM_VERSION=0.13.5
 ARG TFLINT_VERSION=0.20.3
 
 # Latest version of helm may be found at https://github.com/helm/helm/releases
-ARG HELM_VERSION=3.4.0
+ARG HELM_VERSION=3.4.1
 
 # Latest version of dotnet core SDK
 ARG DOTNET_VERSION=5.0
 
 # Azure Functions CLI may be found at https://github.com/Azure/azure-functions-core-tools/releases
-ARG AZFUNC_CLI_VERSION=3.0.2931
+ARG AZFUNC_CLI_VERSION=3.0.2996
 
 # Flux may be found at https://github.com/fluxcd/flux/releases
 ARG FLUXCTL_CLI_VERSION=1.21.0
 
 # Linkerd may be found at https://github.com/linkerd/linkerd2/releases
-ARG LINKERD_CLI_VERSION=stable-2.8.1
+ARG LINKERD_CLI_VERSION=stable-2.9.0
 
 # This Dockerfile adds a non-root user with sudo access. Use the "remoteUser"
 # property in devcontainer.json to use it. On Linux, the container user's GID/UIDs
@@ -163,6 +163,9 @@ RUN curl -s -L https://github.com/weaveworks/flux/releases/download/${FLUXCTL_CL
 # Install Linkerd
 RUN curl -s -L https://github.com/linkerd/linkerd2/releases/download/${LINKERD_CLI_VERSION}/linkerd2-cli-${LINKERD_CLI_VERSION}-linux -o /usr/local/bin/linkerd \
     && chmod +x /usr/local/bin/linkerd
+
+# Install GoLang and Powerline for the bash shell
+RUN go get -u github.com/justjanne/powerline-go
 
 # Clean up
 RUN apt-get autoremove -y \
