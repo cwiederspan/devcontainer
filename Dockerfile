@@ -9,31 +9,31 @@ ENV DEBIAN_FRONTEND=noninteractive
 ARG NODE_VERSION=12.x
 
 # The version of Go Lang install found at https://golang.org/dl/
-ARG GO_VERSION=1.15.6
+ARG GO_VERSION=1.16
 
 # Docker Compose version may be found at https://github.com/docker/compose/releases
-ARG COMPOSE_VERSION=1.27.4
+ARG COMPOSE_VERSION=1.28.3
 
 # Latest version of Terraform may be found at https://www.terraform.io/downloads.html
-ARG TERRAFORM_VERSION=0.14.4
+ARG TERRAFORM_VERSION=0.14.7
 
 # Latest version of Terrform Linter may be found at https://github.com/terraform-linters/tflint/releases
-ARG TFLINT_VERSION=0.23.0
+ARG TFLINT_VERSION=0.24.1
 
 # Latest version of helm may be found at https://github.com/helm/helm/releases
-ARG HELM_VERSION=3.4.2
+ARG HELM_VERSION=3.5.2
 
 # Latest version of dotnet core SDK
 ARG DOTNET_VERSION=5.0
 
 # Azure Functions CLI may be found at https://github.com/Azure/azure-functions-core-tools/releases
-ARG AZFUNC_CLI_VERSION=3.0.3216
+ARG AZFUNC_CLI_VERSION=3.0.3233
 
 # Flux may be found at https://github.com/fluxcd/flux/releases
-ARG FLUXCTL_CLI_VERSION=1.21.1
+ARG FLUXCTL_CLI_VERSION=1.21.2
 
 # Linkerd may be found at https://github.com/linkerd/linkerd2/releases
-ARG LINKERD_CLI_VERSION=stable-2.9.1
+ARG LINKERD_CLI_VERSION=stable-2.9.3
 
 # This Dockerfile adds a non-root user with sudo access. Use the "remoteUser"
 # property in devcontainer.json to use it. On Linux, the container user's GID/UIDs
