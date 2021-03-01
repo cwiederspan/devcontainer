@@ -12,7 +12,7 @@ ARG NODE_VERSION=12.x
 ARG GO_VERSION=1.16
 
 # Docker Compose version may be found at https://github.com/docker/compose/releases
-ARG COMPOSE_VERSION=1.28.3
+ARG COMPOSE_VERSION=1.28.5
 
 # Latest version of Terraform may be found at https://www.terraform.io/downloads.html
 ARG TERRAFORM_VERSION=0.14.7
@@ -27,13 +27,10 @@ ARG HELM_VERSION=3.5.2
 ARG DOTNET_VERSION=5.0
 
 # Azure Functions CLI may be found at https://github.com/Azure/azure-functions-core-tools/releases
-ARG AZFUNC_CLI_VERSION=3.0.3233
-
-# Flux may be found at https://github.com/fluxcd/flux/releases
-ARG FLUXCTL_CLI_VERSION=1.21.2
+ARG AZFUNC_CLI_VERSION=3.0.3284
 
 # Linkerd may be found at https://github.com/linkerd/linkerd2/releases
-ARG LINKERD_CLI_VERSION=stable-2.9.3
+ARG LINKERD_CLI_VERSION=stable-2.9.4
 
 # This Dockerfile adds a non-root user with sudo access. Use the "remoteUser"
 # property in devcontainer.json to use it. On Linux, the container user's GID/UIDs
@@ -156,9 +153,8 @@ RUN curl -s -L https://github.com/Azure/azure-functions-core-tools/releases/down
     && chmod +x func \
     && ln -s /usr/local/bin/azfunc/func /usr/bin/func
 
-# Install fluxctl
-RUN curl -s -L https://github.com/weaveworks/flux/releases/download/${FLUXCTL_CLI_VERSION}/fluxctl_linux_amd64 -o /usr/local/bin/fluxctl \
-    && chmod +x /usr/local/bin/fluxctl
+# Install FluxCD 2.x
+run curl -s https://toolkit.fluxcd.io/install.sh | sudo bash
 
 # Install Linkerd
 RUN curl -s -L https://github.com/linkerd/linkerd2/releases/download/${LINKERD_CLI_VERSION}/linkerd2-cli-${LINKERD_CLI_VERSION}-linux -o /usr/local/bin/linkerd \
