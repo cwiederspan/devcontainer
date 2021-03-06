@@ -156,6 +156,9 @@ RUN curl -s -L https://github.com/Azure/azure-functions-core-tools/releases/down
 # Install FluxCD 2.x
 run curl -s https://toolkit.fluxcd.io/install.sh | sudo bash
 
+# Install Kustomize
+run curl -s https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh | bash
+
 # Install Linkerd
 RUN curl -s -L https://github.com/linkerd/linkerd2/releases/download/${LINKERD_CLI_VERSION}/linkerd2-cli-${LINKERD_CLI_VERSION}-linux -o /usr/local/bin/linkerd \
     && chmod +x /usr/local/bin/linkerd
