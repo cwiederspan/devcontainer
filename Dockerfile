@@ -9,28 +9,28 @@ ENV DEBIAN_FRONTEND=noninteractive
 ARG NODE_VERSION=12.x
 
 # The version of Go Lang install found at https://golang.org/dl/
-ARG GO_VERSION=1.16
+ARG GO_VERSION=1.16.3
 
 # Docker Compose version may be found at https://github.com/docker/compose/releases
-ARG COMPOSE_VERSION=1.28.5
+ARG COMPOSE_VERSION=1.29.1
 
 # Latest version of Terraform may be found at https://www.terraform.io/downloads.html
-ARG TERRAFORM_VERSION=0.14.7
+ARG TERRAFORM_VERSION=0.15.1
 
 # Latest version of Terrform Linter may be found at https://github.com/terraform-linters/tflint/releases
-ARG TFLINT_VERSION=0.24.1
+ARG TFLINT_VERSION=0.28.0
 
 # Latest version of helm may be found at https://github.com/helm/helm/releases
-ARG HELM_VERSION=3.5.2
+ARG HELM_VERSION=3.5.4
 
 # Latest version of dotnet core SDK
 ARG DOTNET_VERSION=5.0
 
 # Azure Functions CLI may be found at https://github.com/Azure/azure-functions-core-tools/releases
-ARG AZFUNC_CLI_VERSION=3.0.3284
+ARG AZFUNC_CLI_VERSION=3.0.3442
 
 # Linkerd may be found at https://github.com/linkerd/linkerd2/releases
-ARG LINKERD_CLI_VERSION=stable-2.9.4
+ARG LINKERD_CLI_VERSION=stable-2.9.5
 
 # This Dockerfile adds a non-root user with sudo access. Use the "remoteUser"
 # property in devcontainer.json to use it. On Linux, the container user's GID/UIDs
@@ -154,7 +154,7 @@ RUN curl -s -L https://github.com/Azure/azure-functions-core-tools/releases/down
     && ln -s /usr/local/bin/azfunc/func /usr/bin/func
 
 # Install FluxCD 2.x
-run curl -s https://toolkit.fluxcd.io/install.sh | sudo bash
+run curl -s https://fluxcd.io/install.sh | sudo bash
 
 # Install Kustomize
 run cd /usr/local/bin \
