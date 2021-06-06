@@ -9,28 +9,28 @@ ENV DEBIAN_FRONTEND=noninteractive
 ARG NODE_VERSION=12.x
 
 # The version of Go Lang install found at https://golang.org/dl/
-ARG GO_VERSION=1.16.3
+ARG GO_VERSION=1.16.5
 
 # Docker Compose version may be found at https://github.com/docker/compose/releases
-ARG COMPOSE_VERSION=1.29.1
+ARG COMPOSE_VERSION=1.29.2
 
 # Latest version of Terraform may be found at https://www.terraform.io/downloads.html
-ARG TERRAFORM_VERSION=0.15.1
+ARG TERRAFORM_VERSION=0.15.5
 
 # Latest version of Terrform Linter may be found at https://github.com/terraform-linters/tflint/releases
-ARG TFLINT_VERSION=0.28.0
+ARG TFLINT_VERSION=0.29.0
 
 # Latest version of helm may be found at https://github.com/helm/helm/releases
-ARG HELM_VERSION=3.5.4
+ARG HELM_VERSION=3.6.0
 
 # Latest version of dotnet core SDK
 ARG DOTNET_VERSION=5.0
 
 # Azure Functions CLI may be found at https://github.com/Azure/azure-functions-core-tools/releases
-ARG AZFUNC_CLI_VERSION=3.0.3442
+ARG AZFUNC_CLI_VERSION=3.0.3568
 
 # Linkerd may be found at https://github.com/linkerd/linkerd2/releases
-ARG LINKERD_CLI_VERSION=stable-2.9.5
+ARG LINKERD_CLI_VERSION=stable-2.10.2
 
 # This Dockerfile adds a non-root user with sudo access. Use the "remoteUser"
 # property in devcontainer.json to use it. On Linux, the container user's GID/UIDs
@@ -105,6 +105,9 @@ RUN echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $(lsb
     && curl -sL https://packages.microsoft.com/keys/microsoft.asc | apt-key add - 2>/dev/null \
     && apt-get update \
     && apt-get install -y azure-cli
+
+# Install Bicep
+RUN az bicep install
 
 # Install Terraform, tflint, and graphviz
 RUN curl -sSL -o /tmp/downloads/terraform.zip https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
