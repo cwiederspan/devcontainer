@@ -9,19 +9,19 @@ ENV DEBIAN_FRONTEND=noninteractive
 ARG NODE_VERSION=12.x
 
 # The version of Go Lang install found at https://golang.org/dl/
-ARG GO_VERSION=1.16.5
+ARG GO_VERSION=1.17
 
 # Docker Compose version may be found at https://github.com/docker/compose/releases
 ARG COMPOSE_VERSION=1.29.2
 
 # Latest version of Terraform may be found at https://www.terraform.io/downloads.html
-ARG TERRAFORM_VERSION=0.15.5
+ARG TERRAFORM_VERSION=1.0.4
 
 # Latest version of Terrform Linter may be found at https://github.com/terraform-linters/tflint/releases
-ARG TFLINT_VERSION=0.29.0
+ARG TFLINT_VERSION=0.31.0
 
 # Latest version of helm may be found at https://github.com/helm/helm/releases
-ARG HELM_VERSION=3.6.0
+ARG HELM_VERSION=3.6.3
 
 # Latest version of dotnet core SDK
 ARG DOTNET_VERSION=5.0
