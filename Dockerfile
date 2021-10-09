@@ -148,14 +148,10 @@ RUN echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-debian
 # Install Dapr CLI
 RUN curl -sL https://raw.githubusercontent.com/dapr/cli/master/install/install.sh | /bin/bash
 
-# Install Azure Functions Core Tools v3
-RUN curl -s -L https://github.com/Azure/azure-functions-core-tools/releases/download/${AZFUNC_CLI_VERSION}/Azure.Functions.Cli.linux-x64.${AZFUNC_CLI_VERSION}.zip -o /tmp/downloads/azfunc.zip \
-    && mkdir -p /tmp/downloads/azfunc \
-    && unzip -qq -d /tmp/downloads/azfunc /tmp/downloads/azfunc.zip \
-    && mv /tmp/downloads/azfunc /usr/local/bin/azfunc \
-    && cd /usr/local/bin/azfunc \
-    && chmod +x func \
-    && ln -s /usr/local/bin/azfunc/func /usr/bin/func
+# Install Azure Functions Core Tools v3 and Static Web Apps CLI
+RUN npm install -g \
+    azure-functions-core-tools@3 --unsafe-perm true \
+    @azure/static-web-apps-cli
 
 # Install FluxCD 2.x
 run curl -s https://fluxcd.io/install.sh | sudo bash
