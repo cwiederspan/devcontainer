@@ -26,9 +26,6 @@ ARG HELM_VERSION=3.7.0
 # Latest version of dotnet core SDK
 ARG DOTNET_VERSION=5.0
 
-# Azure Functions CLI may be found at https://github.com/Azure/azure-functions-core-tools/releases
-ARG AZFUNC_CLI_VERSION=3.0.3785
-
 # Linkerd may be found at https://github.com/linkerd/linkerd2/releases
 ARG LINKERD_CLI_VERSION=stable-2.11.0
 
