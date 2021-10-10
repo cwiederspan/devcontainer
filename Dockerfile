@@ -95,7 +95,8 @@ RUN curl -sL https://deb.nodesource.com/setup_${NODE_VERSION} | bash - \
 # Install some NPM packages
 RUN npm install -g \
     @vue/cli \
-    @angular/cli
+    @angular/cli \
+    typescript
 
 # Install the Azure CLI
 RUN echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $(lsb_release -cs) main" > /etc/apt/sources.list.d/azure-cli.list \
