@@ -23,9 +23,6 @@ ARG TFLINT_VERSION=0.32.1
 # Latest version of helm may be found at https://github.com/helm/helm/releases
 ARG HELM_VERSION=3.7.0
 
-# Latest version of dotnet core SDK
-ARG DOTNET_VERSION=5.0
-
 # Linkerd may be found at https://github.com/linkerd/linkerd2/releases
 ARG LINKERD_CLI_VERSION=stable-2.11.0
 
@@ -130,7 +127,7 @@ RUN curl -sSL -o /tmp/downloads/helm.tar.gz https://get.helm.sh/helm-v${HELM_VER
     && mv /tmp/downloads/helm/linux-amd64/helm /usr/local/bin \
     && helm repo add stable https://charts.helm.sh/stable/
 
-# Install .NET Core 3.1
+# Install .NET Core 3.1 and .NET 5.0
 ENV \
     # Enable detection of running in a container
     DOTNET_RUNNING_IN_CONTAINER=true \
@@ -141,7 +138,9 @@ ENV \
 
 RUN echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-debian-buster-prod buster main" > /etc/apt/sources.list.d/microsoft.list \ 
     && apt-get update \
-    && apt-get install -y dotnet-sdk-${DOTNET_VERSION}
+    && apt-get install -y \
+    dotnet-sdk-3.1 \
+    dotnet-sdk-5.0
 
 # Install Dapr CLI
 RUN curl -sL https://raw.githubusercontent.com/dapr/cli/master/install/install.sh | /bin/bash
