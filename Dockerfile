@@ -162,7 +162,7 @@ RUN curl -s -L https://github.com/linkerd/linkerd2/releases/download/${LINKERD_C
     && chmod +x /usr/local/bin/linkerd
 
 # Install GoLang and Powerline for the bash shell
-RUN go get -u github.com/justjanne/powerline-go
+RUN go install github.com/justjanne/powerline-go@latest
 
 # Clean up
 RUN apt-get autoremove -y \
